@@ -1,5 +1,6 @@
-# Name:
-# Date:
+# Name:Richard Young    Blake Thompson
+# Date:7-13-17
+
 
 
 # proj06: Hangman
@@ -45,101 +46,59 @@ def choose_word(wordlist):
 # in the program
 wordlist = load_words()
 
-# your code begins here
-
-new_list=[]
-def intersection (listc,word):
-    winfactor=0
-    newlength=len(listc)
-    for item in word:
-        new_list.append(item)
-        newlength=newlength-1
-        #if newlength==0:
+# your code begins here!
+print ["Time to play Hangman!","Here are the rules-","You have eleven guesses, You guess a letter correctly, we will tell you and if don't -1 guess.","Please don't type whole words the program will count it as wrong.","Ready to play ?" ]
 
 
-def hangman():
-    indexnum=0
-    counter=0
-    listc=[]
-    wronglist=[]
-    alphalist= ["a","b","c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    print "Welcome to hangman"
-    #word=choose_word(wordlist)
-    word = list(choose_word(wordlist))
-    #print word
-    print"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-    num_guess=len(word)
-    length=len(word)
-    LIST = [len(word) * "_ "]  #####
-    print "The word is", length,"letters long. You have", length, "guesses."
-    for x in range(0,int(length)): #**********
-                 listc.append("_ ")
-    while num_guess!=0:
-                guess = raw_input("Guess a letter: ")
-                print ""
-                if guess in alphalist:
-                    if guess in word:
-                        print guess,"is in this word."
-                        #listc.append(guess)
-                        #print listc
-                        if listc == word:
-                            print "correct letters=", listc
-                            print "wrong letters=", wronglist
-                            intersection(listc, word)
-                       #WHERE THE LETTER IS LOCATED, CODE  (INC)
-                        for num in range(0,len(word)):
-                            indexnum=num
-                            #print indexnum
-                            # If statement isnt working
-                            #print listc[indexnum]
-                            #print word[indexnum]
-                            if guess == word[indexnum]:
-                                    listc[indexnum]=guess
-                        #print "listc =",listc
+X = choose_word(wordlist)
+#return random.choice(X)
+list1 = []
+list2 = []
+list3 = []
+underscore = "_"
+counter = 0
+for letter in X:
+    list1.append(letter)
+    list2.append(underscore)
+print list2
+eeeee = raw_input("Press ENTER : \n")
+while counter <= 11:
+    A = raw_input("Please guess a letter , if you do not wish to continue enter quit \n ")
+    counter3 = 11 - counter
+    if A in list1:
+        counter2 = 0
+        print(A),"is in the word!"
+        for letter in list1:
+            if letter == A:
+                list2[counter2]= A
+            counter2 = counter2 + 1
+
+    else:
+        print "Sorry",(A),"is not in the word"
+        counter = counter + 1
+        list3.append(A)
+
+    if A == 'quit':
+            counter = 12
+    print counter3, "guesses left."
+    print list2
+    print "Letters guessed so far:", list3
+    if list2 == list1:
+        counter = 12
+        print "You did it!"
 
 
 
 
-                    elif guess in listc:
-                        print "You already guessed this. Please guess again."
-                    elif guess in wronglist:
-                        print "You already guessed this. Please guess again"
-                    else:
-                        print guess, "was not correct."
-                        wronglist.append(guess)
-                        num_guess=num_guess-1
-                else:
-                    print "Your guess was either capitalized, more than one letter, or it is not in the alphabet. Guess again."
 
-                if num_guess==0:
-                    print ""
-                    print "YOU RAN OUT OF GUESSES"
-                    print" "
-                    print "The correct word was", word
-                    print ""
-                    print"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-                    break
-                print "correct letters=", listc
-                print "wrong letters=", wronglist
-                print "You have", num_guess, "guesses left."
-                print"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-                if listc==word:
-                    print"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-                    print"  Y                   "
-                    print"      O                   "
-                    print"          U                   "
-                    print"  W                   "
-                    print"      O                   "
-                    print"          N                   "
-                    print"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-                    break
-hangman()
+print list1,"was the word."
 
 
-#for guess in word:
-                           #counter=counter+1
-                            #if counter>2 or counter==2:
-                                #print guess,"is in the word multiple times."
-                                #listc.append(guess)
-                                #print listc
-                            #counter=0
+
+print "May you, please, complete this small survey about our game."
+
+raw_input("Did you enjoy this game?: ")
+raw_input("Curry or lebron?: ")
+
+print "Thank you for your input!"
+print "p.s. if said lebron you are dead to me."
